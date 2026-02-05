@@ -115,24 +115,32 @@ function renderData() {
 }
 
 async function shareContent() {
-    const shareData = {
-        title: document.title,
-        text: 'জুলাই সনদ: প্রস্তাবিত সংস্কারসমূহ',
-        url: window.location.href
-    };
+    const url = window.location.href;
+    const title = document.title || 'জুলাই সনদ: প্রস্তাবিত সংস্কারসমূহ';
+    const text = 'জুলাই সনদ: প্রস্তাবিত সংস্কারসমূহ';
     
-    try {
-        if (navigator.share) {
-            await navigator.share(shareData);
-        } else {
-            openShareModal();
-        }
-    } catch (err) {
-        // User cancelled or error occurred
-        if (err.name !== 'AbortError') {
-            console.error('Share failed:', err);
+    // Debug helper
+    console.log('navigator.share exists?', !!navigator.share);
+    console.log('User agent:', navigator.userAgent);
+    
+    // Try Web Share API first
+    if (navigator.share) {
+        try {
+            await navigator.share({ title, text, url });
+            return; // IMPORTANT: stop here after successful share
+        } catch (err) {
+            // User cancelled or error occurred
+            if (err.name !== 'AbortError') {
+                console.error('Share failed:', err);
+                // Fall through to modal on error (not cancellation)
+            } else {
+                return; // User cancelled, don't show modal
+            }
         }
     }
+    
+    // Fallback: show modal
+    openShareModal();
 }
 
 function openShareModal() {
@@ -166,7 +174,6 @@ function closeShareModal() {
 
 function copyShareLink() {
     const linkInput = document.getElementById('shareLinkInput');
-    const copyBtn = document.getElementById('copyLinkBtn');
     
     // Select and copy text
     linkInput.select();
@@ -175,36 +182,58 @@ function copyShareLink() {
     try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(linkInput.value).then(() => {
-                showCopySuccess(copyBtn);
+                showToast('লিংক কপি হয়েছে');
             }).catch(() => {
-                fallbackCopy(linkInput, copyBtn);
+                fallbackCopy(linkInput);
             });
         } else {
-            fallbackCopy(linkInput, copyBtn);
+            fallbackCopy(linkInput);
         }
     } catch (err) {
-        fallbackCopy(linkInput, copyBtn);
+        fallbackCopy(linkInput);
     }
 }
 
-function fallbackCopy(input, btn) {
+function fallbackCopy(input) {
     try {
         document.execCommand('copy');
-        showCopySuccess(btn);
+        showToast('লিংক কপি হয়েছে');
     } catch (err) {
         console.error('Copy failed:', err);
+        showToast('কপি ব্যর্থ হয়েছে');
     }
 }
 
-function showCopySuccess(btn) {
-    const originalText = btn.textContent;
-    btn.textContent = 'কপি হয়েছে!';
-    btn.style.backgroundColor = '#2e7d32';
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
     
     setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.backgroundColor = '';
-    }, 2000);
+        toast.classList.remove('show');
+    }, 1500);
+}
+
+function detectInAppBrowser() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // Detect common in-app browsers
+    const isFacebookApp = /FBAN|FBAV|FB_IAB|FB4A/i.test(ua);
+    const isMessenger = /Messenger/i.test(ua);
+    const isInstagram = /Instagram/i.test(ua);
+    const isTwitterApp = /Twitter/i.test(ua);
+    const isLinkedIn = /LinkedInApp/i.test(ua);
+    
+    const isInAppBrowser = isFacebookApp || isMessenger || isInstagram || isTwitterApp || isLinkedIn;
+    
+    console.log('In-app browser detected?', isInAppBrowser);
+    console.log('Facebook:', isFacebookApp, 'Messenger:', isMessenger, 'Instagram:', isInstagram);
+    
+    return isInAppBrowser;
+}
+
+function openInBrowser() {
+    window.open(window.location.href, '_blank');
 }
 
 function handleScroll() {
@@ -233,4 +262,16 @@ if (shareModal) {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderData();
+    
+    // Check for in-app browser and show warning/button if needed
+    if (detectInAppBrowser()) {
+        const warning = document.getElementById('inAppWarning');
+        const openBrowserBtn = document.getElementById('openInBrowserBtn');
+        
+        if (warning) warning.style.display = 'block';
+        if (openBrowserBtn) {
+            openBrowserBtn.style.display = 'inline-block';
+            openBrowserBtn.addEventListener('click', openInBrowser);
+        }
+    }
 });
