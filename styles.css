@@ -280,8 +280,28 @@ body {
 }
 
 .site-footer p {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.site-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.site-footer a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .site-footer {
+        text-align: center;
+    }
 }
 
 .share-modal {
