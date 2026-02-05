@@ -1,5 +1,25 @@
 const sections = [
   {
+    title: "সংসদ ও তত্ত্বাবধায়ক সরকার",
+    pairs: [
+      { now: "সংবিধানে তত্ত্বাবধায়ক সরকার ব্যবস্থা নেই", proposal: "তত্ত্বাবধায়ক সরকার ব্যবস্থার প্রত্যাবর্তন" },
+      { now: "বর্তমানে সংসদে পিআর পদ্ধতি নেই", proposal: "উচ্চকক্ষে পিআর পদ্ধতিতে আসন বণ্টন হবে" },
+      { now: "ডেপুটি স্পিকার সরকারি দল থেকে", proposal: "ডেপুটি স্পিকার বাধ্যতামূলকভাবে বিরোধী দল থেকে" },
+      { now: "এমপিরা দলীয় সিদ্ধান্তের বাইরে ভোট দিলে সদস্য পদ বাতিল", proposal: "বাজেট ও আস্থা বিল ছাড়া অন্য সব বিষয়ে এমপিরা স্বাধীনভাবে ভোট দিতে পারবে" },
+      { now: "বিদেশের সঙ্গে চুক্তিতে সংসদের অনুমোদনের প্রয়োজন নেই", proposal: "রাষ্ট্রীয় নিরাপত্তা-সংক্রান্ত চুক্তিতে সংসদের উভয় কক্ষে অনুমোদন লাগবে" }
+    ]
+  },
+  {
+    title: "ভাষা, মেয়াদকাল ও সংসদ কাঠামো",
+    pairs: [
+      { now: "বাংলা ছাড়া অন্য ভাষার স্বীকৃতি নেই", proposal: "রাষ্ট্রভাষা হবে বাংলা। অন্য সব মাতৃভাষাকেও স্বীকৃতি দেওয়া হবে" },
+      { now: "সংবিধান সংশোধনে দুই-তৃতীয়াংশ সংখ্যাগরিষ্ঠতা, গণভোট লাগে না", proposal: "সংবিধান সংশোধনে নিম্নকক্ষে দুই-তৃতীয়াংশ এবং উচ্চকক্ষে সংখ্যাগরিষ্ঠতা লাগবে। তত্ত্বাবধায়ক সরকার ব্যবস্থার পরিবর্তনসহ কয়েকটায় গণভোট লাগবে" },
+      { now: "প্রধানমন্ত্রীর জরুরি অবস্থা জারির ক্ষমতা", proposal: "জরুরি অবস্থা জারিতে মন্ত্রিসভার অনুমোদন লাগবে, যেখানে বিরোধীদলীয় নেতাও থাকবে" },
+      { now: "এক ব্যক্তি যত বছর ইচ্ছা, প্রধানমন্ত্রী পদে থাকা", proposal: "এক ব্যক্তি পুরো জীবনে ১০ বছরের বেশি প্রধানমন্ত্রী পদে থাকতে পারবে না" },
+      { now: "বর্তমান সংসদ এক-কক্ষবিশিষ্ট", proposal: "সংসদ হবে দ্বি-কক্ষবিশিষ্ট, যেখানে উচ্চকক্ষে থাকবে ১০০ আসন" }
+    ]
+  },
+  {
     title: "বিচার বিভাগ ও প্রশাসনিক সংস্কার",
     pairs: [
       { now: "আইনজীবী সংগঠন সরাসরি দলীয় রাজনীতিতে যুক্ত", proposal: "আইনজীবী সংগঠন দলীয় রাজনীতির বাইরে থাকা" },
@@ -37,26 +57,6 @@ const sections = [
       { now: "মহা-হিসাব নিরীক্ষক ও নিয়ন্ত্রক নিয়োগ দেন প্রধানমন্ত্রী", proposal: "বিরোধী দল থেকে নির্বাচিত ডেপুটি স্পিকার, সরকারি দলের নেতা, বিরোধী দলীয় নেতা প্রভৃতির সমন্বিত কমিটির মাধ্যমে নিয়োগ" },
       { now: "আইন থাকলেও দুদকের চেয়ারম্যান ও কমিশনার নিয়োগ প্রধানমন্ত্রীর নিয়ন্ত্রণে", proposal: "দুদককে সাংবিধানিক মর্যাদা দেওয়া এবং সরকার ও বিরোধী দলের প্রতিনিধি প্রভৃতির সমন্বিত কমিটির মাধ্যমে নিয়োগ" },
       { now: "সরকারি কর্মচারীদের বিরুদ্ধে মামলা করতে সরকারের অনুমোদন", proposal: "সরকারি কর্মচারীদের বিরুদ্ধে মামলা করতে সরকারের অনুমোদন লাগবে না দুদকের" }
-    ]
-  },
-  {
-    title: "সংসদ ও তত্ত্বাবধায়ক সরকার",
-    pairs: [
-      { now: "সংবিধানে তত্ত্বাবধায়ক সরকার ব্যবস্থা নেই", proposal: "তত্ত্বাবধায়ক সরকার ব্যবস্থার প্রত্যাবর্তন" },
-      { now: "বর্তমানে সংসদে পিআর পদ্ধতি নেই", proposal: "উচ্চকক্ষে পিআর পদ্ধতিতে আসন বণ্টন হবে" },
-      { now: "ডেপুটি স্পিকার সরকারি দল থেকে", proposal: "ডেপুটি স্পিকার বাধ্যতামূলকভাবে বিরোধী দল থেকে" },
-      { now: "এমপিরা দলীয় সিদ্ধান্তের বাইরে ভোট দিলে সদস্য পদ বাতিল", proposal: "বাজেট ও আস্থা বিল ছাড়া অন্য সব বিষয়ে এমপিরা স্বাধীনভাবে ভোট দিতে পারবে" },
-      { now: "বিদেশের সঙ্গে চুক্তিতে সংসদের অনুমোদনের প্রয়োজন নেই", proposal: "রাষ্ট্রীয় নিরাপত্তা-সংক্রান্ত চুক্তিতে সংসদের উভয় কক্ষে অনুমোদন লাগবে" }
-    ]
-  },
-  {
-    title: "ভাষা, মেয়াদকাল ও সংসদ কাঠামো",
-    pairs: [
-      { now: "বাংলা ছাড়া অন্য ভাষার স্বীকৃতি নেই", proposal: "রাষ্ট্রভাষা হবে বাংলা। অন্য সব মাতৃভাষাকেও স্বীকৃতি দেওয়া হবে" },
-      { now: "সংবিধান সংশোধনে দুই-তৃতীয়াংশ সংখ্যাগরিষ্ঠতা, গণভোট লাগে না", proposal: "সংবিধান সংশোধনে নিম্নকক্ষে দুই-তৃতীয়াংশ এবং উচ্চকক্ষে সংখ্যাগরিষ্ঠতা লাগবে। তত্ত্বাবধায়ক সরকার ব্যবস্থার পরিবর্তনসহ কয়েকটায় গণভোট লাগবে" },
-      { now: "প্রধানমন্ত্রীর জরুরি অবস্থা জারির ক্ষমতা", proposal: "জরুরি অবস্থা জারিতে মন্ত্রিসভার অনুমোদন লাগবে, যেখানে বিরোধীদলীয় নেতাও থাকবে" },
-      { now: "এক ব্যক্তি যত বছর ইচ্ছা, প্রধানমন্ত্রী পদে থাকা", proposal: "এক ব্যক্তি পুরো জীবনে ১০ বছরের বেশি প্রধানমন্ত্রী পদে থাকতে পারবে না" },
-      { now: "বর্তমান সংসদ এক-কক্ষবিশিষ্ট", proposal: "সংসদ হবে দ্বি-কক্ষবিশিষ্ট, যেখানে উচ্চকক্ষে থাকবে ১০০ আসন" }
     ]
   }
 ];
@@ -116,7 +116,7 @@ function renderData() {
 
 async function shareContent() {
     const shareData = {
-        title: 'গণভোটে হ্যাঁ কেন দেবেন',
+        title: document.title,
         text: 'জুলাই সনদ: প্রস্তাবিত সংস্কারসমূহ',
         url: window.location.href
     };
@@ -125,12 +125,86 @@ async function shareContent() {
         if (navigator.share) {
             await navigator.share(shareData);
         } else {
-            await navigator.clipboard.writeText(window.location.href);
-            alert('লিংক কপি করা হয়েছে!');
+            openShareModal();
         }
     } catch (err) {
-        console.error('Share failed:', err);
+        // User cancelled or error occurred
+        if (err.name !== 'AbortError') {
+            console.error('Share failed:', err);
+        }
     }
+}
+
+function openShareModal() {
+    const modal = document.getElementById('shareModal');
+    const linkInput = document.getElementById('shareLinkInput');
+    const url = window.location.href;
+    const text = 'জুলাই সনদ: প্রস্তাবিত সংস্কারসমূহ';
+    const encodedUrl = encodeURIComponent(url);
+    const encodedText = encodeURIComponent(text);
+    const fullText = encodeURIComponent(`${text} ${url}`);
+    
+    // Set link input value
+    linkInput.value = url;
+    
+    // Set share links
+    document.getElementById('shareWhatsApp').href = `https://wa.me/?text=${fullText}`;
+    document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+    document.getElementById('shareTelegram').href = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
+    
+    // Show modal
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeShareModal() {
+    const modal = document.getElementById('shareModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+function copyShareLink() {
+    const linkInput = document.getElementById('shareLinkInput');
+    const copyBtn = document.getElementById('copyLinkBtn');
+    
+    // Select and copy text
+    linkInput.select();
+    linkInput.setSelectionRange(0, 99999); // For mobile devices
+    
+    try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(linkInput.value).then(() => {
+                showCopySuccess(copyBtn);
+            }).catch(() => {
+                fallbackCopy(linkInput, copyBtn);
+            });
+        } else {
+            fallbackCopy(linkInput, copyBtn);
+        }
+    } catch (err) {
+        fallbackCopy(linkInput, copyBtn);
+    }
+}
+
+function fallbackCopy(input, btn) {
+    try {
+        document.execCommand('copy');
+        showCopySuccess(btn);
+    } catch (err) {
+        console.error('Copy failed:', err);
+    }
+}
+
+function showCopySuccess(btn) {
+    const originalText = btn.textContent;
+    btn.textContent = 'কপি হয়েছে!';
+    btn.style.backgroundColor = '#2e7d32';
+    
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.backgroundColor = '';
+    }, 2000);
 }
 
 function handleScroll() {
@@ -148,6 +222,14 @@ function scrollToTop() {
 elements.shareBtn.addEventListener('click', shareContent);
 elements.scrollTopBtn.addEventListener('click', scrollToTop);
 window.addEventListener('scroll', handleScroll);
+
+// Share modal event listeners
+const shareModal = document.getElementById('shareModal');
+if (shareModal) {
+    shareModal.querySelector('.share-modal-overlay').addEventListener('click', closeShareModal);
+    shareModal.querySelector('.share-modal-close').addEventListener('click', closeShareModal);
+    document.getElementById('copyLinkBtn').addEventListener('click', copyShareLink);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     renderData();
