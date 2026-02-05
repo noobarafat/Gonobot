@@ -214,28 +214,6 @@ function showToast(message) {
     }, 1500);
 }
 
-function detectInAppBrowser() {
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    
-    // Detect common in-app browsers
-    const isFacebookApp = /FBAN|FBAV|FB_IAB|FB4A/i.test(ua);
-    const isMessenger = /Messenger/i.test(ua);
-    const isInstagram = /Instagram/i.test(ua);
-    const isTwitterApp = /Twitter/i.test(ua);
-    const isLinkedIn = /LinkedInApp/i.test(ua);
-    
-    const isInAppBrowser = isFacebookApp || isMessenger || isInstagram || isTwitterApp || isLinkedIn;
-    
-    console.log('In-app browser detected?', isInAppBrowser);
-    console.log('Facebook:', isFacebookApp, 'Messenger:', isMessenger, 'Instagram:', isInstagram);
-    
-    return isInAppBrowser;
-}
-
-function openInBrowser() {
-    window.open(window.location.href, '_blank');
-}
-
 function handleScroll() {
     if (window.scrollY > 300) {
         elements.scrollTopBtn.classList.add('visible');
@@ -262,16 +240,4 @@ if (shareModal) {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderData();
-    
-    // Check for in-app browser and show warning/button if needed
-    if (detectInAppBrowser()) {
-        const warning = document.getElementById('inAppWarning');
-        const openBrowserBtn = document.getElementById('openInBrowserBtn');
-        
-        if (warning) warning.style.display = 'block';
-        if (openBrowserBtn) {
-            openBrowserBtn.style.display = 'inline-block';
-            openBrowserBtn.addEventListener('click', openInBrowser);
-        }
-    }
 });
